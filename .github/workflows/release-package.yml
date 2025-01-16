@@ -26,3 +26,5 @@ jobs:
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          packages: write  # Ensure write permission to publish packages
+          contents: read
