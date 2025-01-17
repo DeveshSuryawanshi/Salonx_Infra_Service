@@ -1,5 +1,5 @@
 {
-  "name": "@DeveshSuryawanshi/salonx_infra_service",
+  "name": "@DeveshSuryawanshi/Salonx_Infra_Service",
   "version": "1.6.0",
   "description": "This is a infrastructure service for common items for salon_x application",
   "main": "index.js",
