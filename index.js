@@ -1,3 +1,3 @@
-import * as auth from './src/auth/auth.js';
+import * as auth from './src/auth/auth.mjs';
 
 export { auth };
