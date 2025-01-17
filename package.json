@@ -1,6 +1,6 @@
 {
   "name": "@DeveshSuryawanshi/salonx_infra_service",
-  "version": "1.8.0",
+  "version": "1.9.0",
   "description": "This is a infrastructure service for common items for salon_x application",
   "main": "index.js",
   "scripts": {
@@ -12,7 +12,8 @@
   "license": "ISC",
   "type": "module",
   "dependencies": {
-
+    "dotenv": "^16.4.7",
+    "winston": "^3.17.0"
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/"

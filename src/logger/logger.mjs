@@ -1,7 +1,7 @@
 import { createLogger, format, transports, addColors } from 'winston';
 import path from 'path';
 import fs from 'fs';
-import config from './config.mjs';
+import config from '../config/config.mjs';
 
 const customLevels = {
   levels: {
@@ -82,11 +82,11 @@ const Logger = createLogger({
 });
 
 // Usage
-// Logger.fatal('This is a fatal log'); // Highest priority
-// Logger.error('This is an error log');
-// Logger.warn('This is a warning log');
-// Logger.info('This is an info log');
-// Logger.http('This is an HTTP log');
-// Logger.debug('This is a debug log'); // Lowest priority
+Logger.fatal('This is a fatal log'); // Highest priority
+Logger.error('This is an error log');
+Logger.warn('This is a warning log');
+Logger.info('This is an info log');
+Logger.http('This is an HTTP log');
+Logger.debug('This is a debug log'); // Lowest priority
 
 export default Logger;

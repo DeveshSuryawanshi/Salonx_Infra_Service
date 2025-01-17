@@ -1,2 +1,5 @@
 node_modules
 docs.md
+src/logger/logs
+.env
+package-lock.json
