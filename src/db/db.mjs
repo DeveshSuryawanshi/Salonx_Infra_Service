@@ -38,6 +38,9 @@ const connectToMongoDB = async (tenant) => {
     connection.on('connected', () => {
       Logger.info(`Mongoose connected for tenant: ${tenant}`);
     });
+    
+    // Plugin to manage database operations when connection is open
+    await addPlugin();
 
     connection.on('error', (err) => {
       Logger.error(`Mongoose connection error for tenant ${tenant}: ${err.message}`);
@@ -66,5 +69,25 @@ process.on('SIGINT', async () => {
   Logger.info('All database connections closed');
   process.exit(0);
 });
+
+// MongoDB connection open event middleware
+const addPlugin = async() => {
+  try {
+    mongoose.connection.on('open', () => {
+      Logger.info('MongoDB connection is open');
+  
+      // Mongoose plugin to add the updatedAt field automatically before saving
+      mongoose.plugin((schema) => {
+        schema.pre('save', function (next) {
+          this.updatedAt = new Date();
+          next();
+        });
+      });
+    });
+  } catch (error) {
+    Logger.error(``, error);
+    throw new Error('Failed to connect to the database');
+  }
+};
 
 export default connectToMongoDB;
