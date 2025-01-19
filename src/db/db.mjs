@@ -85,8 +85,8 @@ const addPlugin = async() => {
       });
     });
   } catch (error) {
-    Logger.error(``, error);
-    throw new Error('Failed to connect to the database');
+    Logger.error(`Failed to connect to Plugin`, error);
+    throw new Error('Failed to connect to Plugin');
   }
 };
 
