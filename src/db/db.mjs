@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
-import config from '../config.mjs';
-import { Logger } from '../logger.mjs';
+import config from '../config/config.mjs';
+import Logger  from '../logger/logger.mjs';
 
 const connectionCache = new Map(); // Advanced caching using Map
 

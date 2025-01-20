@@ -1,6 +1,6 @@
-import { Logger } from "../config/logger.mjs";
+import Logger from "../logger/logger.mjs";
 
-const errorMiddleware = (err, req, res, next) => {
+const errorHandler = (err, req, res, next) => {
   // Log the error for debugging (you can use a logger like winston or morgan)
   Logger.error(err.message);
   console.error(err.stack);
@@ -37,4 +37,4 @@ const errorMiddleware = (err, req, res, next) => {
   });
 };
 
-export default errorMiddleware;
+export default errorHandler;

@@ -31,7 +31,7 @@ const config = {
         file: ENV.LOG_FILE,
     },
     cors: {
-        origin: ENV.CORS_ORIGIN,
+        origins: ENV.CORS_ORIGIN,
     },
     smtp: {
         host: ENV.SMTP_HOST,

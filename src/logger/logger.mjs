@@ -69,7 +69,7 @@ transportsArray.push(
 );
 
 // Create a Winston logger
-const Logger = createLogger({
+export const Logger = createLogger({
   levels: customLevels.levels,
   level: 'info', // Minimum level to log
   format: format.combine(
@@ -81,12 +81,25 @@ const Logger = createLogger({
   transports: transportsArray,
 });
 
-// Usage
-Logger.fatal('This is a fatal log'); // Highest priority
-Logger.error('This is an error log');
-Logger.warn('This is a warning log');
-Logger.info('This is an info log');
-Logger.http('This is an HTTP log');
-Logger.debug('This is a debug log'); // Lowest priority
+// Middleware for logging HTTP requests
+export const requestLogger = (req, res, next) => {
+  const { method, url } = req;
+  const startTime = new Date();
 
-export default Logger;
+  res.on('finish', () => {
+    const { statusCode } = res;
+    const responseTime = new Date() - startTime;
+    Logger.info(`[${method}] ${url} ${statusCode} - ${responseTime}ms`);
+  });
+
+  next();
+};
+
+
+// Usage
+// Logger.fatal('This is a fatal log'); // Highest priority
+// Logger.error('This is an error log');
+// Logger.warn('This is a warning log');
+// Logger.info('This is an info log');
+// Logger.http('This is an HTTP log');
+// Logger.debug('This is a debug log'); // Lowest priority
