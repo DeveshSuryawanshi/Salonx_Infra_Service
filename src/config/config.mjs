@@ -38,6 +38,9 @@ const config = {
         user: ENV.SMTP_USER,
         password: ENV.SMTP_PASSWORD,
     },
+    open_route: {
+        routes: ENV.OPEN_ROUTES
+    }
 };
 
 export default config;

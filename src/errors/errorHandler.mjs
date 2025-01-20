@@ -1,9 +1,8 @@
-import Logger from "../logger/logger.mjs";
+import { Logger } from "../logger/logger.mjs";
 
 const errorHandler = (err, req, res, next) => {
   // Log the error for debugging (you can use a logger like winston or morgan)
   Logger.error(err.message);
-  console.error(err.stack);
 
   // Handle different types of errors
   if (err.name === "ValidationError") {

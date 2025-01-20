@@ -24,10 +24,12 @@ const ENV = {
     SESSION_SECRET: process.env.SESSION_SECRET,
     LOG_LEVEL: process.env.LOG_LEVEL || "info",
     LOG_FILE: process.env.LOG_FILE || "app.log",
-    CORS_ORIGIN: process.env.CORS_ORIGIN || "http://localhost:3000",
+    CORS_ORIGIN: process.env.CORS_ORIGIN || ["http://localhost:3000"],
     SMTP_HOST: process.env.SMTP_HOST,
     SMTP_USER: process.env.SMTP_USER,
     SMTP_PASSWORD: process.env.SMTP_PASSWORD,
+    // Open Roues
+    OPEN_ROUTES: JSON.parse(process.env.OPEN_ROUTES),
 };
 
 export default ENV;
