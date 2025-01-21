@@ -1,6 +1,6 @@
 import User from "../db/models/Users.model.mjs";
 
-export default validateRequest = async (req, res, next) => {
+const validateRequest = async (req, res, next) => {
   try {
     const { id } = req.user;
     if (!id) {
@@ -15,3 +15,5 @@ export default validateRequest = async (req, res, next) => {
     next(error);
   }
 };
+
+export default validateRequest;
