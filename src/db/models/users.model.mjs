@@ -28,6 +28,7 @@ const userSchema = new mongoose.Schema(
         /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
         'Please provide a valid email address',
       ],
+      index: true,
     },
     password: {
       type: String,
@@ -38,7 +39,7 @@ const userSchema = new mongoose.Schema(
     role: {
       type: String,
       enum: ['VISITER', 'CUSTOMER', 'EMPLOYEE', 'MANAGER', 'ADMIN', 'SUPER_ADMIN', 'MODERATOR'], // Add roles as needed
-      default: 'user',
+      default: 'CUSTOMER',
     },
     isVerified: {
       type: Boolean,
@@ -47,6 +48,7 @@ const userSchema = new mongoose.Schema(
     isDeleted: {
       type: Boolean,
       default: false,
+      index: true,
     },
   },
   {
