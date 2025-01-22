@@ -90,4 +90,25 @@ const addPlugin = async() => {
   }
 };
 
-export default connectToMongoDB;
+const getTenantModel = (tenant, modelName, schema) => {
+  if (!tenant) {
+    Logger.error('Tenant identifier is required to get a tenant-specific model');
+    throw new Error('Tenant identifier missing');
+  }
+
+  const connection = connectionCache.get(tenant);
+  if (!connection) {
+    Logger.error(`No database connection found for tenant: ${tenant}`);
+    throw new Error(`Database connection missing for tenant: ${tenant}`);
+  }
+
+  if (connection.models[modelName]) {
+    return connection.models[modelName];
+  }
+
+  Logger.info(`Registering model '${modelName}' for tenant: ${tenant}`);
+  return connection.model(modelName, schema);
+};
+
+
+export { connectToMongoDB, getTenantModel };
