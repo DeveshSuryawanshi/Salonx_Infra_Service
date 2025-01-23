@@ -15,8 +15,6 @@ export {
   Logger,
   requestLogger,
   configureCorsPolicy,
-  User,
   validateRequest,
-  getTenantModel,
   getUserModel
 };

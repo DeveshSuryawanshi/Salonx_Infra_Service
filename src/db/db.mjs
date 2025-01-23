@@ -27,7 +27,7 @@ const connectToMongoDB = async (tenant) => {
     return connectionCache.get(tenant);
   }
 
-  const tenantURI = `${config.mongoDB.uri}/${tenant}`; // Dynamic URI for tenant
+  const tenantURI = `${config.mongoDB.uri}_${tenant}`; // Dynamic URI for tenant
 
   try {
     Logger.info(`Establishing connection for tenant: ${tenant}`);

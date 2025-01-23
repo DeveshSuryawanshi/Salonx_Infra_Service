@@ -2,6 +2,7 @@ import mongoose from 'mongoose';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import config from '../../config/config.mjs'; // JWT secret, etc.
+import { getTenantModel } from '../db.mjs';
 
 // Define the schema
 const userSchema = new mongoose.Schema(
@@ -39,7 +40,7 @@ const userSchema = new mongoose.Schema(
     role: {
       type: String,
       enum: ['VISITER', 'CUSTOMER', 'EMPLOYEE', 'MANAGER', 'ADMIN', 'SUPER_ADMIN', 'MODERATOR'], // Add roles as needed
-      default: 'CUSTOMER',
+      default: ['CUSTOMER'],
     },
     isVerified: {
       type: Boolean,
