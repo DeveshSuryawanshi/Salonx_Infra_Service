@@ -38,7 +38,7 @@ const userSchema = new mongoose.Schema(
       select: false, // Prevent password from being returned in queries
     },
     role: {
-      type: String,
+      type: Array,
       enum: ['VISITER', 'CUSTOMER', 'EMPLOYEE', 'MANAGER', 'ADMIN', 'SUPER_ADMIN', 'MODERATOR'], // Add roles as needed
       default: ['CUSTOMER'],
     },
