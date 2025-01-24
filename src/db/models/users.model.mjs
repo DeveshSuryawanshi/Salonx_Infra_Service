@@ -65,8 +65,8 @@ userSchema.virtual('fullName').get(function () {
 });
 
 // Indexes for optimized queries
-userSchema.index({ email: 1 });
-userSchema.index({ isDeleted: 1 });
+// userSchema.index({ email: 1 });
+// userSchema.index({ isDeleted: 1 });
 
 // Middleware for password hashing
 userSchema.pre('save', async function (next) {
