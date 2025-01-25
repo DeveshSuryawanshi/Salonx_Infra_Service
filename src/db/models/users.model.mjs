@@ -38,9 +38,19 @@ const userSchema = new mongoose.Schema(
       select: false, // Prevent password from being returned in queries
     },
     role: {
-      type: Array,
-      enum: ['VISITER', 'CUSTOMER', 'EMPLOYEE', 'MANAGER', 'ADMIN', 'SUPER_ADMIN', 'MODERATOR'], // Add roles as needed
-      default: ['CUSTOMER'],
+      type: [String], // Specify the type as an array of strings
+      enum: {
+        values: ['VISITER', 'CUSTOMER', 'EMPLOYEE', 'MANAGER', 'ADMIN', 'SUPER_ADMIN', 'MODERATOR'],
+        message: 'Role must be one of VISITER, CUSTOMER, EMPLOYEE, MANAGER, ADMIN, SUPER_ADMIN, MODERATOR',
+      },
+      default: ['CUSTOMER'], // Default value as an array with 'CUSTOMER'
+      validate: {
+        validator: function (roles) {
+          // Ensure that roles is an array and contains at least one element
+          return Array.isArray(roles) && roles.length > 0;
+        },
+        message: 'Roles array must contain at least one role',
+      },
     },
     isVerified: {
       type: Boolean,
