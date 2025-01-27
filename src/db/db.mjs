@@ -111,4 +111,4 @@ const getTenantModel = (tenant, modelName, schema) => {
 };
 
 
-export { connectToMongoDB, getTenantModel };
+export { connectToMongoDB, getTenantModel, connectionCache };
