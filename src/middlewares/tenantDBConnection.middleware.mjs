@@ -1,7 +1,7 @@
 import { connectionCache } from "../db/db.mjs";
 
-export default tenant = (req, res, next) => {
-  const tenant = req.headers['x-tenant-id'];
+export default tenantDBConnection = (req, res, next) => {
+  const tenant = req.headers['X-Tenant'];
 
   if (!tenant) {
     return res.status(400).json({ message: 'Tenant ID is missing in the request headers.' });
