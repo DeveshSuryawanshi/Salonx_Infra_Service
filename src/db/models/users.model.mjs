@@ -1,4 +1,4 @@
-import tenant from "../tenantStore.mjs";
+import { tenant } from "../tenantStore.mjs";
 import getModel from "../modelFactory.mjs"
 import userSchema from "../schemas/users.schema.mjs";
 

@@ -1,4 +1,4 @@
-import setTenant from '../db/tenantStore.mjs';
+import { setTenant } from '../db/tenantStore.mjs';
 
 const setTenantToStore = (req, res, next) => {
   const tenant = req.tenant; // Extract tenant from previous middleware
