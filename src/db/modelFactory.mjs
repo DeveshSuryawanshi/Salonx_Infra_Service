@@ -15,7 +15,7 @@ export default getModel = (tenant, modelName, schema) => {
   }
 
   // Create and cache the model for the tenant
-  const model = mongoose.model(`${tenant}_${modelName}`, schema);
+  const model = mongoose.model(`${modelName}`, schema);
   tenantModels[modelName] = model;
 
   return model;
