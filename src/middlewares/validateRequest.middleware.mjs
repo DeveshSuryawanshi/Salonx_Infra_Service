@@ -1,4 +1,4 @@
-import User from "../db/models/Users.model.mjs";
+import { User } from "../db/models/Users.model.mjs";
 
 const validateRequest = async (req, res, next) => {
   try {
@@ -6,7 +6,8 @@ const validateRequest = async (req, res, next) => {
     if (!id) {
       return res.status(400).json({ message: 'Invalid User ID!' });
     }
-    const user = User.findById(id);
+    const UserModel = User();
+    const user = await UserModel.findById(id);
     if(user) {
         return next();
     }

@@ -1,8 +1,8 @@
 import mongoose from 'mongoose';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-import config from '../../config/config.mjs'; // JWT secret, etc.
-import { getTenantModel } from '../db.mjs';
+import config from '../config/config.mjs'; // JWT secret, etc.
+import { getTenantModel } from '../db/db.mjs';
 
 // Define the schema
 const userSchema = new mongoose.Schema(

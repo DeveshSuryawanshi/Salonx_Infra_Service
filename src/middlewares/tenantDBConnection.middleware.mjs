@@ -1,6 +1,6 @@
 import { connectionCache } from "../db/db.mjs";
 
-export default tenantDBConnection = (req, res, next) => {
+const tenantDBConnection = (req, res, next) => {
   const tenant = req.headers['X-Tenant'];
 
   if (!tenant) {
@@ -17,3 +17,5 @@ export default tenantDBConnection = (req, res, next) => {
 
   next();
 };
+
+export default tenantDBConnection;

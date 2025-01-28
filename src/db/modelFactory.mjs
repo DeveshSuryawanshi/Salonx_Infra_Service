@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 
 const modelCache = new Map();
 
-export default getModel = (tenant, modelName, schema) => {
+const getModel = (tenant, modelName, schema) => {
   if (!modelCache.has(tenant)) {
     modelCache.set(tenant, {});
   }
@@ -20,3 +20,5 @@ export default getModel = (tenant, modelName, schema) => {
 
   return model;
 };
+
+export default getModel;
