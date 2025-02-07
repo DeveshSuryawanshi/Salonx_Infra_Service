@@ -1,9 +1,10 @@
 // db/modelFactory.js
-import mongoose from 'mongoose';
+// import mongoose from 'mongoose';
+import { connectToMongoDB } from "./db.mjs";
 
 const modelCache = new Map();
 
-const getModel = (tenant, modelName, schema) => {
+const getModel = async(tenant, modelName, schema) => {
   if (!modelCache.has(tenant)) {
     modelCache.set(tenant, {});
   }
@@ -14,8 +15,10 @@ const getModel = (tenant, modelName, schema) => {
     return tenantModels[modelName];
   }
 
+  // const model = mongoose.model(`${modelName}`, schema);
+  const connection = await connectToMongoDB(tenant);
+  const model = connection.model(modelName, schema);
   // Create and cache the model for the tenant
-  const model = mongoose.model(`${modelName}`, schema);
   tenantModels[modelName] = model;
 
   return model;
